@@ -75,7 +75,7 @@ const createStudentValidationSchema: ObjectSchema = Joi.object({
           'string.base': '"gender" should be a type of string',
           'any.only': '"gender" must be one of [Male, Female, Other]',
         }),
-      dateOfBirth: Joi.string().optional().messages({
+      dateOfBirth: Joi.date().optional().messages({
         'string.base': '"dateOfBirth" should be a type of string',
       }),
       bloodGroup: Joi.string()

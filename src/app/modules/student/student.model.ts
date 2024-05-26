@@ -50,7 +50,7 @@ const studentSchema = new Schema<TStudent, StudentModel>({
     type: String,
     enum: ['Male', 'Female', 'Other'],
   },
-  dateOfBirth: { type: String },
+  dateOfBirth: { type: Date },
   bloodGroup: {
     type: String,
     enum: ['A+', 'A-', 'AB+', 'AB-', 'O+', 'O-'],
