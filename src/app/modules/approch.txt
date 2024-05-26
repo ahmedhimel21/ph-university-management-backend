@@ -1,0 +1,5 @@
+1. at the same time we have to create
+    (a). creating user
+        (i). need id, password and role. password can be come with req.body or we have to generate default password.
+    (b). creating student
+        (ii). we need to add id and for referencing we have to create a field "user" and it's refer user collection
