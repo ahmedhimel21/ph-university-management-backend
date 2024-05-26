@@ -19,3 +19,7 @@ export type TAcademicSemester = {
   startMonth: TMonth
   endMonth: TMonth
 }
+
+export type TAcademicSemesterNameCode = {
+  [key: string]: string
+}

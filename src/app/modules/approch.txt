@@ -3,3 +3,8 @@
         (i). need id, password and role. password can be come with req.body or we have to generate default password.
     (b). creating student
         (ii). we need to add id and for referencing we have to create a field "user" and it's refer user collection
+
+2. Handle some business logic -->
+1. we can't create same semester name at same year -> (i). we can check in service layer (ii).Using pre middleware hook
+(iii). using instance method
+2. we have use predefined semester code: we have to check in service layer
