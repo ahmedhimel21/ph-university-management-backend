@@ -26,7 +26,7 @@ export type TStudent = {
   user: Types.ObjectId
   name: UserName
   gender: 'Male' | 'Female'
-  dateOfBirth?: Date
+  dateOfBirth?: string
   email: string
   contactNo: string
   emergencyContactNo: string
@@ -36,6 +36,8 @@ export type TStudent = {
   guardian: Guardian
   localGuardian: LocalGuardian
   profileImage?: string
+  admissionSemester: Types.ObjectId
+  isDeleted: boolean
 }
 
 // static method

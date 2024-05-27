@@ -50,7 +50,7 @@ const studentSchema = new Schema<TStudent, StudentModel>({
     type: String,
     enum: ['Male', 'Female', 'Other'],
   },
-  dateOfBirth: { type: Date },
+  dateOfBirth: { type: String },
   bloodGroup: {
     type: String,
     enum: ['A+', 'A-', 'AB+', 'AB-', 'O+', 'O-'],
@@ -60,6 +60,8 @@ const studentSchema = new Schema<TStudent, StudentModel>({
   guardian: guardianSchema,
   localGuardian: localGuardianSchema,
   profileImage: { type: String },
+  admissionSemester: { type: Schema.Types.ObjectId, ref: 'AcademicSemester' },
+  isDeleted: { type: Boolean, default: false },
 })
 
 // query middleware

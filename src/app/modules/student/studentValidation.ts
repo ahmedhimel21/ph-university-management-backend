@@ -75,7 +75,7 @@ const createStudentValidationSchema: ObjectSchema = Joi.object({
           'string.base': '"gender" should be a type of string',
           'any.only': '"gender" must be one of [Male, Female, Other]',
         }),
-      dateOfBirth: Joi.date().optional().messages({
+      dateOfBirth: Joi.string().optional().messages({
         'string.base': '"dateOfBirth" should be a type of string',
       }),
       bloodGroup: Joi.string()
@@ -99,6 +99,7 @@ const createStudentValidationSchema: ObjectSchema = Joi.object({
       localGuardian: localGuardianValidationSchema.required().messages({
         'any.required': '"localGuardian" is a required field',
       }),
+      admissionSemester: Joi.string(),
       profileImage: Joi.string().optional().messages({
         'string.base': '"profileImage" should be a type of string',
       }),

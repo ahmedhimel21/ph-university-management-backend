@@ -1,8 +1,11 @@
 import config from '../../config'
+import { TAcademicSemester } from '../academicSemester/academicSemester.interface'
+import AcademicSemester from '../academicSemester/academicSemester.model'
 import { TStudent } from '../student/student.interface'
 import { Student } from '../student/student.model'
 import { TUser } from './user.interface'
 import User from './user.model'
+import { generateStudentId } from './user.utility'
 
 const createStudentIntoDB = async (password: string, studentData: TStudent) => {
   // creating user
@@ -11,8 +14,15 @@ const createStudentIntoDB = async (password: string, studentData: TStudent) => {
   createUser.password = password || config.default_pass
   // add role
   createUser.role = 'student'
+
+  // find academic semester
+  const admissionSemester = await AcademicSemester.findById(
+    studentData.admissionSemester,
+  )
   // add generated id
-  createUser.id = '2030100001'
+  createUser.id = await generateStudentId(
+    admissionSemester as TAcademicSemester,
+  )
   const newUser = await User.create(createUser)
 
   // create student
