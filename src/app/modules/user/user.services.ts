@@ -34,7 +34,7 @@ const createStudentIntoDB = async (password: string, studentData: TStudent) => {
 
     // create student
     if (!newUser.length) {
-      throw new AppError(500, 'Failed to create user!')
+      throw new AppError(400, 'Failed to create user!')
     }
     studentData.id = newUser[0].id
     studentData.user = newUser[0]._id
@@ -42,7 +42,7 @@ const createStudentIntoDB = async (password: string, studentData: TStudent) => {
     // creating student(transaction-2)
     const newStudent = await Student.create([studentData], { session })
     if (!newStudent.length) {
-      throw new Error('Failed to create student!')
+      throw new AppError(400, 'Failed to create student!')
     }
     await session.commitTransaction()
     await session.endSession()

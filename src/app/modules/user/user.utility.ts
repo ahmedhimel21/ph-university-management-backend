@@ -19,8 +19,8 @@ const findLastStudentId = async () => {
 export const generateStudentId = async (payload: TAcademicSemester) => {
   let currentId = (0).toString() // 0000 by default
 
-  const lastStudentId = await findLastStudentId() //2025 01 0001
-  const lastStudentSemesterCode = lastStudentId?.substring(6) //01
+  const lastStudentId = await findLastStudentId() //2025010001
+  const lastStudentSemesterCode = lastStudentId?.substring(4, 6) //01
   const lastStudentSemesterYear = lastStudentId?.substring(0, 4) // 2025
   const currentStudentSemesterCode = payload.code //01
   const currentStudentSemesterYear = payload.year //2025

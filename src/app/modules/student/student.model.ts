@@ -86,7 +86,7 @@ studentSchema.pre('aggregate', function (next) {
 
 // statics
 studentSchema.statics.isExistUser = async function (id: string) {
-  const existingUser = Student.findOne({ id })
+  const existingUser = await Student.findOne({ id })
   return existingUser
 }
 
