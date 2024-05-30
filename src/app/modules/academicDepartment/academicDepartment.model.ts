@@ -1,5 +1,6 @@
 import { model, Schema } from 'mongoose'
 import { TAcademicDepartment } from './academicDepartment.interface'
+import AppError from '../../errors/AppError'
 
 const academicDepartmentSchema = new Schema<TAcademicDepartment>(
   {
@@ -30,7 +31,7 @@ academicDepartmentSchema.pre('findOneAndUpdate', async function (next) {
   const query = this.getQuery()
   const isDepartmentExists = await AcademicDepartmentModel.findOne(query)
   if (!isDepartmentExists) {
-    throw new Error('Department does not exist!')
+    throw new AppError(404, 'Department not found!')
   }
   next()
 })
