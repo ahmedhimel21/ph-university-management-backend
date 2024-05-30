@@ -35,8 +35,9 @@ export type TStudent = {
   permanentAddress: string
   guardian: Guardian
   localGuardian: LocalGuardian
-  profileImage?: string
   admissionSemester: Types.ObjectId
+  academicDepartment: Types.ObjectId
+  profileImage?: string
   isDeleted: boolean
 }
 

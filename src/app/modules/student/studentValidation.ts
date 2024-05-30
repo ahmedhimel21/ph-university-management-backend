@@ -100,6 +100,7 @@ const createStudentValidationSchema: ObjectSchema = Joi.object({
         'any.required': '"localGuardian" is a required field',
       }),
       admissionSemester: Joi.string(),
+      academicDepartment: Joi.string(),
       profileImage: Joi.string().optional().messages({
         'string.base': '"profileImage" should be a type of string',
       }),
