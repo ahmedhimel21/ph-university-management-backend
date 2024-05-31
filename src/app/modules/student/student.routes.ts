@@ -9,6 +9,9 @@ router.get('/', StudentController.getAllStudent)
 // get single student
 router.get('/:studentId', StudentController.getSingleStudent)
 
+// update
+router.patch('/:studentId', StudentController.updateStudent)
+
 // deleteStudent
 router.delete('/:studentId', StudentController.deleteStudent)
 
