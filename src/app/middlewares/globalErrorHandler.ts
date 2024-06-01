@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express'
-import { ValidationError } from 'joi'
 import { TErrorSources } from '../interface/error.interface'
 import config from '../config'
+import joiValidationErrorHandler from '../errors/joiValidationHandler'
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   let statusCode = err.statusCode || 500
@@ -15,22 +15,8 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
       message: 'Something went wrong',
     },
   ]
-  const joiValidationError = (err: ValidationError) => {
-    statusCode = 400
-    const errorSources: TErrorSources = err.details.map(detail => {
-      return {
-        path: detail.path[detail.path.length - 1],
-        message: detail.message,
-      }
-    })
-    return {
-      statusCode,
-      message: 'Validation error!',
-      errorSources,
-    }
-  }
   if (err.isJoi) {
-    const simplifiedError = joiValidationError(err)
+    const simplifiedError = joiValidationErrorHandler(err)
     statusCode = simplifiedError.statusCode
     message = simplifiedError.message
     errorSources = simplifiedError.errorSources
